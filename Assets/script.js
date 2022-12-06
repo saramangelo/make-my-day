@@ -7,20 +7,22 @@ $(function () {
   // local storage. HINT: What does `this` reference in the click listener
   // function? How can DOM traversal be used to get the "hour-x" id of the
   // time-block containing the button that was clicked? How might the id be
-  // useful when saving the description in local storage?
+  // useful when saving the description in local storage? 3rd
   //
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
   // attribute of each time-block be used to conditionally add or remove the
   // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
+  // current hour in 24-hour time? 2nd
   //
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
+  // attribute of each time-block be used to do this? 4th
   //
-  // TODO: Add code to display the current date in the header of the page.
+  // TODO: Add code to display the current date in the header of the page. 1st
 });
+
+//MY CODE/PSEUDOCODE
 
 
 // this example is best to do static element vs dynamic
@@ -30,7 +32,7 @@ $(function () {
 
 
 function init (){
-// put date on page (and maybe clock)
+// put date/time on page
 // start interval
 // checking time for adjusting timeblocks color
 // check local storage to see if we need to save anything on timeblocks
