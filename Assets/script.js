@@ -21,3 +21,41 @@ $(function () {
   //
   // TODO: Add code to display the current date in the header of the page.
 });
+
+
+// this example is best to do static element vs dynamic
+// time/date
+// save user entry to local storage
+// if current time, block is red, if future time, green, if past time, gray (similar to timer from quiz, checking every second)
+
+
+function init (){
+// put date on page (and maybe clock)
+// start interval
+// checking time for adjusting timeblocks color
+// check local storage to see if we need to save anything on timeblocks
+// attach eventListeners to all buttons
+// best practice - keep variables where you need them as opposed to all being globally scoped
+var today = dayjs().format("MMM DD, YYYY hh:mm:ss a")
+$("#currentDay").text(today);
+startTimer();
+}
+
+function startTimer(){
+  var clockInterval = setInterval(function(){
+    var now = dayjs();
+    var today = now.format("MMM DD, YYYY hh:mm:ss a");
+    var currentHour = now.hour();
+    // current hour to check against blocks
+    console.log(currentHour);
+$("#currentDay").text(today);
+  },1000);
+}
+
+init();
+
+
+// go to html and finish off other timeblocks
+// as this runs, loop through timeblocks, check (id, id should be military, set id as 12, 1, 3, set a class)
+// queryselectorall(class of timeblock), if id is less, its past, if its === its current, if its > its future
+// add event listener to 
