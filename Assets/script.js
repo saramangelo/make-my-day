@@ -36,7 +36,7 @@ function init (){
 // check local storage to see if we need to save anything on timeblocks
 // attach eventListeners to all buttons
 // best practice - keep variables where you need them as opposed to all being globally scoped
-var today = dayjs().format("MMM DD, YYYY hh:mm:ss a")
+var today = dayjs().format("MMM DD, YYYY [at] hh:mm:ss a")
 $("#currentDay").text(today);
 startTimer();
 }
@@ -44,7 +44,7 @@ startTimer();
 function startTimer(){
   var clockInterval = setInterval(function(){
     var now = dayjs();
-    var today = now.format("MMM DD, YYYY hh:mm:ss a");
+    var today = now.format("MMM DD, YYYY [at] hh:mm:ss a");
     var currentHour = now.hour();
     // current hour to check against blocks
     console.log(currentHour);
