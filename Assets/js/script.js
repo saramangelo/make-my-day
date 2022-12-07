@@ -22,7 +22,7 @@ var today = dayjs().format("MMM DD, YYYY [at] hh:mm:ss a");
 var currentHour = dayjs().hour();
 var userEntries = {};
 
-$(function saveUserInput() {
+$(function () {
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -43,24 +43,51 @@ $(function saveUserInput() {
   // TODO: Add code to display the current date in the header of the page. 1st √
 });
 
-// FUNCTION TO UPDATE COLOR BLOCK--SHOULD THIS BE RUNNING WITH TIMER/CLOCK?
+// FUNCTION TO UPDATE COLOR BLOCK--SHOULD THIS BE RUNNING WITH TIMER/CLOCK? -- HOW DO I KNOW IF THIS IS WORKING?
 
+function checkTime(){
 for (var i = 0; i < timeBlock.length; i++)
-  if (timeBlock[i] < currentHour) {
+  if (timeBlock[i].id < currentHour) {
     timeBlock[i].addClass(pastEl);
 
-    console.log(timeBlock);
-  } else if (timeBlock[i] === currentHour) {
+  
+  } else if (timeBlock[i].id === currentHour) {
     timeBlock[i].addClass(presentEl);
 
-    console.log(timeBlock);
-  } else if (timeBlock[i] > currentHour) {
+ 
+  } else if (timeBlock[i].id > currentHour) {
     timeBlock[i].addClass(futureEl);
 
     console.log(timeBlock);
   }
+};
 
-//MY CODE/PSEUDOCODE
+
+
+// FUNCTION TO SAVE USER INPUT ON TEXTAREA
+
+function saveUserInput(event){
+event.preventDefault();
+
+for (var i =0; i < textAreaEl; i++){
+  userEntries = textAreaEl.value;
+  localStorage.setItem("typedInput", JSON.stringify(userEntries));
+  console.log(userEntries)
+}
+
+renderUserInput();
+}
+
+
+
+
+// FUNCTION TO DISPLAY USER INPUT ON TEXTAREA
+function renderUserInput(){
+
+}
+
+
+//MY PSEUDOCODE
 
 // this example is best to do static element vs dynamic
 // time/date
@@ -89,5 +116,6 @@ function startTimer() {
   }, 1000);
 }
 
+checkTime();
 startTimer();
-// saveButton.addEventListener("click", saveUserInput);
+saveButton.addEventListener("click", saveUserInput);
