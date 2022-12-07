@@ -6,21 +6,21 @@
 var pastEl = $(".past"); // 9 AM
 var presentEl = $(".present"); // 10 AM
 var futureEl = $(".future"); // 11 AM
-var timeBlock = document.querySelectorAll(".time-block");
-// var hourNine = $("#9");
-// var hourTen = $("#10");
-// var hourEleven = $("#11");
-// var hourTwelve = $("#12");
-// var hourThirteen = $("#13");
-// var hourFourteen = $("#14");
-// var hourFifteen = $("#15");
-// var hourSixteen = $("#16");
-// var hourSeventeen = $("#17");
-var textAreaEl = document.querySelectorAll(".description");
-var saveButton = document.querySelectorAll(".btn");
+var timeBlock = $(".time-block");
+// var hourNine = $("#hour-9");
+// var hourTen = $("#hour-10");
+// var hourEleven = $("#hour-11");
+// var hourTwelve = $("#hour-12");
+// var hourThirteen = $("#hour-13");
+// var hourFourteen = $("#hour-14");
+// var hourFifteen = $("#hour-15");
+// var hourSixteen = $("#hour-16");
+// var hourSeventeen = $("#hour-17");
+var textAreaEl = $(".description");
+var saveButton = $(".btn");
 var today = dayjs().format("MMM DD, YYYY [at] hh:mm:ss a");
 var currentHour = dayjs().hour();
-var userEntries = {};
+var userEntries = [];
 
 $(function () {
   // TODO: Add a listener for click events on the save button. This code should
@@ -58,7 +58,7 @@ for (var i = 0; i < timeBlock.length; i++)
   } else if (timeBlock[i].id > currentHour) {
     timeBlock[i].addClass(futureEl);
 
-    console.log(timeBlock);
+    console.log(timeBlock[i]);
   }
 };
 
@@ -70,8 +70,8 @@ function saveUserInput(event){
 event.preventDefault();
 
 for (var i =0; i < textAreaEl; i++){
-  userEntries = textAreaEl.value;
-  localStorage.setItem("typedInput", JSON.stringify(userEntries));
+  userEntries = textAreaEl.val();
+  localStorage.setItem("typedInput", userEntries);
   console.log(userEntries)
 }
 
@@ -118,4 +118,4 @@ function startTimer() {
 
 checkTime();
 startTimer();
-saveButton.addEventListener("click", saveUserInput);
+saveButton.on("click", saveUserInput);
