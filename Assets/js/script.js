@@ -1,6 +1,10 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
+
+var pastEl =
+
+
 $(function () {
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
@@ -31,21 +35,23 @@ $(function () {
 // if current time, block is red, if future time, green, if past time, gray (similar to timer from quiz, checking every second)
 
 
-function init (){
-// put date/time on page
-// start interval
+
+// put date/time on page √
+// start interval √
 // checking time for adjusting timeblocks color
 // check local storage to see if we need to save anything on timeblocks
 // attach eventListeners to all buttons
 // best practice - keep variables where you need them as opposed to all being globally scoped
-var today = dayjs().format("MMM DD, YYYY [at] hh:mm:ss a")
-$("#currentDay").text(today);
+
+// var today = dayjs().format("MMM DD, YYYY [at] hh:mm:ss a");
+// $("#currentDay").text(today);
 startTimer();
-}
+
 
 function startTimer(){
-  var clockInterval = setInterval(function(){
+  setInterval(function(){
     var now = dayjs();
+    var today = dayjs().format;
     var today = now.format("MMM DD, YYYY [at] hh:mm:ss a");
     var currentHour = now.hour();
     // current hour to check against blocks
@@ -54,7 +60,8 @@ $("#currentDay").text(today);
   },1000);
 }
 
-init();
+
+
 
 
 // go to html and finish off other timeblocks
