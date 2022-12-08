@@ -86,7 +86,8 @@ function renderUserInput() {
 // post data into textarea
 for (var i = 0; i < timeBlockEl.length; i++) {
   var key = timeBlockEl[i].getAttribute("id");
-console.log(localStorage.getItem(key));
+  var value = localStorage.getItem(key);
+timeBlockEl[i].children[1].innerText = value;
 }
 }
 //
