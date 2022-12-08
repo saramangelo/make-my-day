@@ -6,7 +6,7 @@ This workday scheduler application, aptly named "make-my-day," features dynamica
 
 ## Screenshot
 
-![.png]()
+![make-my-day-ss.png](./Assets/make-my-day-ss.png)
 
 ## Link to webpage:
 

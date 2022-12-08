@@ -1,5 +1,3 @@
-
-
 //MY PSEUDOCODE
 
 // this example is best to do static element vs dynamic
