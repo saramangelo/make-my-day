@@ -25,15 +25,15 @@ var pastEl = $(".past"); // 9 AM
 var presentEl = $(".present"); // 10 AM
 var futureEl = $(".future"); // 11 AM
 var timeBlockEl = $(".time-block");
-// var hourNine = $("#hour-9");
-// var hourTen = $("#hour-10");
-// var hourEleven = $("#hour-11");
-// var hourTwelve = $("#hour-12");
-// var hourThirteen = $("#hour-13");
-// var hourFourteen = $("#hour-14");
-// var hourFifteen = $("#hour-15");
-// var hourSixteen = $("#hour-16");
-// var hourSeventeen = $("#hour-17");
+var hourNine = $("#hour-9");
+var hourTen = $("#hour-10");
+var hourEleven = $("#hour-11");
+var hourTwelve = $("#hour-12");
+var hourThirteen = $("#hour-13");
+var hourFourteen = $("#hour-14");
+var hourFifteen = $("#hour-15");
+var hourSixteen = $("#hour-16");
+var hourSeventeen = $("#hour-17");
 var textAreaEl = $(".description");
 var saveButton = $(".btn");
 
@@ -83,14 +83,19 @@ for (var i = 0; i < timeBlockEl.length; i++)
 // FUNCTION TO GET FROM LOCAL STORAGE AND DISPLAY USER INPUT ON TEXTAREA
 
 function renderUserInput(){
-  console.log(localStorage.getItem("9"))
-  console.log(localStorage.getItem("[i]"))
-  // change html with local storage value
-  // var userEntries = 
+  // console.log(localStorage.getItem("9"))
+  // for each? $.each(localStorage, function(key, value))
+// for (var i = 0; i<localStorage.length; i++){
+// var userInput = localStorage.getItem("id");
+// textAreaEl.text(userInput);
+// console.log(userInput);
+// }
+//   // change html with local storage value for loop
+
   
-  // if(userEntries!==null){
-  //   return;
-  // }
+//   if(userInput!==null){
+//     return;
+//   }
   
 
 }
