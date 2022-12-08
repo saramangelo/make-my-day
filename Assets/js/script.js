@@ -19,7 +19,6 @@
 // attach eventListeners to all buttons
 // best practice - keep variables where you need them as opposed to all being globally scoped
 
-
 // jQuery
 var pastEl = $(".past"); // 9 AM
 var presentEl = $(".present"); // 10 AM
@@ -35,20 +34,17 @@ var hourFifteen = $("#hour-15");
 var hourSixteen = $("#hour-16");
 var hourSeventeen = $("#hour-17");
 var textAreaEl = $(".description");
-var saveButton = $(".btn");
 var today = dayjs().format("MMM DD, YYYY [at] hh:mm:ss a");
 var currentHour = dayjs().hour();
 var hourTimeNumber = [];
 
-
-
-for (var i = 0; i<timeBlockEl.length; i++){
-  var elementID = timeBlockEl[i].getAttribute('id');
-if (elementID.length === 6) hourTimeNumber.push(parseInt(elementID[5]));
-if (elementID.length === 7) hourTimeNumber.push(parseInt(elementID[5] + elementID[6]));
+for (var i = 0; i < timeBlockEl.length; i++) {
+  var elementID = timeBlockEl[i].getAttribute("id");
+  if (elementID.length === 6) hourTimeNumber.push(parseInt(elementID[5]));
+  if (elementID.length === 7)
+    hourTimeNumber.push(parseInt(elementID[5] + elementID[6]));
 }
 
-console.log(hourTimeNumber)
 
 
 $(function () {
@@ -74,75 +70,55 @@ $(function () {
 
 // FUNCTION TO UPDATE COLOR BLOCK--SHOULD THIS BE RUNNING WITH TIMER/CLOCK? -- HOW DO I KNOW IF THIS IS WORKING?
 
-console.log(currentHour);
-function checkTime(){
-for (var i = 0; i < hourTimeNumber.length; i++)
-  if (hourTimeNumber[i] < currentHour) {
-    timeBlockEl[i].classList.add('past');
-    // console.log('p')
-  } else if (hourTimeNumber[i] == currentHour) {
-    timeBlockEl[i].classList.add('present');
-// console.log('c')
- 
-  } else if (hourTimeNumber[i] > currentHour) {
-    timeBlockEl[i].classList.add('future');
-// console.log('f')
-
-  }
-};
+function checkTime() {
+  for (var i = 0; i < hourTimeNumber.length; i++)
+    if (hourTimeNumber[i] < currentHour) {
+      timeBlockEl[i].classList.add("past");
+    } else if (hourTimeNumber[i] == currentHour) {
+      timeBlockEl[i].classList.add("present");
+    } else if (hourTimeNumber[i] > currentHour) {
+      timeBlockEl[i].classList.add("future");
+    }
+}
 
 // FUNCTION TO GET FROM LOCAL STORAGE AND DISPLAY USER INPUT ON TEXTAREA
 
-function renderUserInput(){
+function renderUserInput() {
   // console.log(localStorage.getItem("9"))
   // for each? $.each(localStorage, function(key, value))
-// for (var i = 0; i<localStorage.length; i++){
-// var userInput = localStorage.getItem("id");
-// textAreaEl.text(userInput);
-// console.log(userInput);
-// }
-//   // change html with local storage value for loop
-
-  
-//   if(userInput!==null){
-//     return;
-//   }
-  
-
+  // for (var i = 0; i<localStorage.length; i++){
+  // var userInput = localStorage.getItem("id");
+  // textAreaEl.text(userInput);
+  // console.log(userInput);
+  // }
+  //   // change html with local storage value for loop
+  //   if(userInput!==null){
+  //     return;
+  //   }
 }
-// 
-
+//
 
 // FUNCTION TO SAVE USER INPUT ON TEXTAREA
 
-function saveUserInput(event){
-event.preventDefault();
-// console.log($(event.target).siblings("textarea").val());
-localStorage.setItem($(event.target).attr("id"), $(event.target).siblings("textarea").val());
+function saveUserInput(event) {
+  console.log($(this).siblings());
+  // localStorage.setItem(
+  //   $(event.target).attr("id"),
+  //   $(event.target).siblings("textarea").val()
+  // );
 
-
-  // console.log(userEntries)
-  // console.log(textAreaEl);
 
 }
-renderUserInput();
-
-
-
-
-
 
 
 // TIME INTERVAL FUNCTION
 
-  setInterval(function () {
-    var today = dayjs().format("MMM DD, YYYY [at] hh:mm:ss a");
-    $("#currentDay").text(today);
-  }, 1000);
+setInterval(function () {
+  var today = dayjs().format("MMM DD, YYYY [at] hh:mm:ss a");
+  $("#currentDay").text(today);
+}, 1000);
 
+$('.saveBtn').on("click", saveUserInput);
 
-
-
-$(saveButton).on("click", saveUserInput);
 checkTime();
-
+renderUserInput();
