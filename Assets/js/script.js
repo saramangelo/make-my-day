@@ -81,17 +81,13 @@ function checkTime() {
 // FUNCTION TO GET FROM LOCAL STORAGE AND DISPLAY USER INPUT ON TEXTAREA
 
 function renderUserInput() {
-  // console.log(localStorage.getItem("9"))
-  // for each? $.each(localStorage, function(key, value))
-  // for (var i = 0; i<localStorage.length; i++){
-  // var userInput = localStorage.getItem("id");
-  // textAreaEl.text(userInput);
-  // console.log(userInput);
-  // }
-  //   // change html with local storage value for loop
-  //   if(userInput!==null){
-  //     return;
-  //   }
+// timeBlockEl textarea - child element
+
+// post data into textarea
+for (var i = 0; i < timeBlockEl.length; i++) {
+  var key = timeBlockEl[i].getAttribute("id");
+console.log(localStorage.getItem(key));
+}
 }
 //
 
