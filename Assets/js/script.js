@@ -33,7 +33,6 @@ var hourFourteen = $("#hour-14");
 var hourFifteen = $("#hour-15");
 var hourSixteen = $("#hour-16");
 var hourSeventeen = $("#hour-17");
-var textAreaEl = $(".description");
 var today = dayjs().format("MMM DD, YYYY [at] hh:mm:ss a");
 var currentHour = dayjs().hour();
 var hourTimeNumber = [];
@@ -44,8 +43,6 @@ for (var i = 0; i < timeBlockEl.length; i++) {
   if (elementID.length === 7)
     hourTimeNumber.push(parseInt(elementID[5] + elementID[6]));
 }
-
-
 
 $(function () {
   // TODO: Add a listener for click events on the save button. This code should
@@ -100,16 +97,11 @@ function renderUserInput() {
 
 // FUNCTION TO SAVE USER INPUT ON TEXTAREA
 
-function saveUserInput(event) {
-  console.log($(this).siblings());
-  // localStorage.setItem(
-  //   $(event.target).attr("id"),
-  //   $(event.target).siblings("textarea").val()
-  // );
-
-
+function saveUserInput() {
+  var value = $(this).siblings(".description").val();
+  var key = $(this).parent().attr("id");
+  localStorage.setItem(key, value);
 }
-
 
 // TIME INTERVAL FUNCTION
 
@@ -118,7 +110,7 @@ setInterval(function () {
   $("#currentDay").text(today);
 }, 1000);
 
-$('.saveBtn').on("click", saveUserInput);
+$(".saveBtn").on("click", saveUserInput);
 
 checkTime();
 renderUserInput();
