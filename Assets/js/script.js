@@ -36,7 +36,6 @@ var timeBlockEl = $(".time-block");
 // var hourSeventeen = $("#hour-17");
 var textAreaEl = $(".description");
 var saveButton = $(".btn");
-var userEntries = [];
 
 var today = dayjs().format("MMM DD, YYYY [at] hh:mm:ss a");
 var currentHour = dayjs().hour();
@@ -81,34 +80,37 @@ for (var i = 0; i < timeBlockEl.length; i++)
   }
 };
 
-// FUNCTION TO DISPLAY USER INPUT ON TEXTAREA
+// FUNCTION TO GET FROM LOCAL STORAGE AND DISPLAY USER INPUT ON TEXTAREA
 
 function renderUserInput(){
-  var userEntries = localStorage.getItem("typedInput");
+  console.log(localStorage.getItem("9"))
+  console.log(localStorage.getItem("[i]"))
+  // change html with local storage value
+  // var userEntries = 
   
-  if(userEntries!==null){
-    return;
-  }
+  // if(userEntries!==null){
+  //   return;
+  // }
   
 
 }
-
+// 
 
 
 // FUNCTION TO SAVE USER INPUT ON TEXTAREA
 
 function saveUserInput(event){
 event.preventDefault();
-console.log($(event.target).siblings("textarea").val());
+// console.log($(event.target).siblings("textarea").val());
 localStorage.setItem($(event.target).attr("id"), $(event.target).siblings("textarea").val());
 
 
   // console.log(userEntries)
   // console.log(textAreaEl);
 
-
-renderUserInput();
 }
+renderUserInput();
+
 
 
 
