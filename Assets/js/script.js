@@ -2,11 +2,29 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html. --> IS THIS REFERRING TO $() AROUND FUNCTION ON LINE 25?
 
+//MY PSEUDOCODE
+
+// this example is best to do static element vs dynamic
+// time/date
+// save user entry to local storage
+// if current time, block is red, if future time, green, if past time, gray (similar to timer from quiz, checking every second)
+// go to html and finish off other timeblocks √
+// as this runs, loop through timeblocks, check (id, id should be military, set id as 12, 1, 3, set a class)
+// queryselectorall(class of timeblock), if id is less, its past, if its === its current, if its > its future
+// add event listener to save button √
+// put date/time on page √
+// start interval √
+// checking time for adjusting timeblocks color
+// check local storage to see if we need to save anything on timeblocks
+// attach eventListeners to all buttons
+// best practice - keep variables where you need them as opposed to all being globally scoped
+
+
 // jQuery
 var pastEl = $(".past"); // 9 AM
 var presentEl = $(".present"); // 10 AM
 var futureEl = $(".future"); // 11 AM
-var timeBlock = $(".time-block");
+var timeBlockEl = $(".time-block");
 // var hourNine = $("#hour-9");
 // var hourTen = $("#hour-10");
 // var hourEleven = $("#hour-11");
@@ -18,9 +36,9 @@ var timeBlock = $(".time-block");
 // var hourSeventeen = $("#hour-17");
 var textAreaEl = $(".description");
 var saveButton = $(".btn");
+var userEntries = [];
 var today = dayjs().format("MMM DD, YYYY [at] hh:mm:ss a");
 var currentHour = dayjs().hour();
-var userEntries = [];
 
 $(function () {
   // TODO: Add a listener for click events on the save button. This code should
@@ -46,19 +64,19 @@ $(function () {
 // FUNCTION TO UPDATE COLOR BLOCK--SHOULD THIS BE RUNNING WITH TIMER/CLOCK? -- HOW DO I KNOW IF THIS IS WORKING?
 
 function checkTime(){
-for (var i = 0; i < timeBlock.length; i++)
-  if (timeBlock[i].id < currentHour) {
-    timeBlock[i].addClass(pastEl);
-
+for (var i = 0; i < timeBlockEl.length; i++)
+  if (timeBlockEl[i].dataHour < currentHour) {
+    timeBlockEl[i].addClass('past');
+    console.log(timeBlockEl[i]);
   
-  } else if (timeBlock[i].id === currentHour) {
-    timeBlock[i].addClass(presentEl);
+  } else if (timeBlockEl[i].dataHour === currentHour) {
+    timeBlockEl[i].addClass('present');
 
  
-  } else if (timeBlock[i].id > currentHour) {
-    timeBlock[i].addClass(futureEl);
+  } else if (timeBlockEl[i].dataHour > currentHour) {
+    timeBlockEl[i].addClass('future');
 
-    console.log(timeBlock[i]);
+
   }
 };
 
@@ -69,7 +87,7 @@ for (var i = 0; i < timeBlock.length; i++)
 function saveUserInput(event){
 event.preventDefault();
 
-for (var i =0; i < textAreaEl; i++){
+for (var i =0; i < textAreaEl.length; i++){
   userEntries = textAreaEl.val();
   localStorage.setItem("typedInput", userEntries);
   console.log(userEntries)
@@ -87,35 +105,15 @@ function renderUserInput(){
 }
 
 
-//MY PSEUDOCODE
+// TIME INTERVAL FUNCTION
 
-// this example is best to do static element vs dynamic
-// time/date
-// save user entry to local storage
-// if current time, block is red, if future time, green, if past time, gray (similar to timer from quiz, checking every second)
-// go to html and finish off other timeblocks √
-// as this runs, loop through timeblocks, check (id, id should be military, set id as 12, 1, 3, set a class)
-// queryselectorall(class of timeblock), if id is less, its past, if its === its current, if its > its future
-// add event listener to save button √
-// put date/time on page √
-// start interval √
-// checking time for adjusting timeblocks color
-// check local storage to see if we need to save anything on timeblocks
-// attach eventListeners to all buttons
-// best practice - keep variables where you need them as opposed to all being globally scoped
-
-// FUNCTIONS
-
-function startTimer() {
   setInterval(function () {
     var today = dayjs().format("MMM DD, YYYY [at] hh:mm:ss a");
-    var currentHour = dayjs().hour();
-    // current hour to check against blocks
-    console.log(currentHour);
     $("#currentDay").text(today);
   }, 1000);
-}
 
-checkTime();
-startTimer();
+
+
+
 saveButton.on("click", saveUserInput);
+checkTime();
