@@ -37,6 +37,7 @@ var timeBlockEl = $(".time-block");
 var textAreaEl = $(".description");
 var saveButton = $(".btn");
 var userEntries = [];
+
 var today = dayjs().format("MMM DD, YYYY [at] hh:mm:ss a");
 var currentHour = dayjs().hour();
 
@@ -63,22 +64,34 @@ $(function () {
 
 // FUNCTION TO UPDATE COLOR BLOCK--SHOULD THIS BE RUNNING WITH TIMER/CLOCK? -- HOW DO I KNOW IF THIS IS WORKING?
 
+// .addClass did not work for me.
 function checkTime(){
 for (var i = 0; i < timeBlockEl.length; i++)
-  if (timeBlockEl[i].dataHour < currentHour) {
-    timeBlockEl[i].addClass('past');
-    console.log(timeBlockEl[i]);
-  
-  } else if (timeBlockEl[i].dataHour === currentHour) {
-    timeBlockEl[i].addClass('present');
+
+  if (timeBlockEl[i].id < currentHour) {
+    timeBlockEl[i].classList.add('past');
+  } else if (timeBlockEl[i].id == currentHour) {
+    timeBlockEl[i].classList.add('present');
 
  
-  } else if (timeBlockEl[i].dataHour > currentHour) {
-    timeBlockEl[i].addClass('future');
+  } else if (timeBlockEl[i].id > currentHour) {
+    timeBlockEl[i].classList.add('future');
 
 
   }
 };
+
+// FUNCTION TO DISPLAY USER INPUT ON TEXTAREA
+
+function renderUserInput(){
+  var userEntries = localStorage.getItem("typedInput");
+  
+  if(userEntries!==null){
+    return;
+  }
+  
+
+}
 
 
 
@@ -86,12 +99,13 @@ for (var i = 0; i < timeBlockEl.length; i++)
 
 function saveUserInput(event){
 event.preventDefault();
+console.log($(event.target).siblings("textarea").val());
+localStorage.setItem($(event.target).attr("id"), $(event.target).siblings("textarea").val());
 
-for (var i =0; i < textAreaEl.length; i++){
-  userEntries = textAreaEl.val();
-  localStorage.setItem("typedInput", userEntries);
-  console.log(userEntries)
-}
+
+  // console.log(userEntries)
+  // console.log(textAreaEl);
+
 
 renderUserInput();
 }
@@ -99,10 +113,6 @@ renderUserInput();
 
 
 
-// FUNCTION TO DISPLAY USER INPUT ON TEXTAREA
-function renderUserInput(){
-
-}
 
 
 // TIME INTERVAL FUNCTION
@@ -115,5 +125,6 @@ function renderUserInput(){
 
 
 
-saveButton.on("click", saveUserInput);
+$(saveButton).on("click", saveUserInput);
 checkTime();
+
