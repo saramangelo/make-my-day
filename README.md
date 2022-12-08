@@ -2,7 +2,7 @@
 
 ## Description
 
-This workday scheduler application, aptly named "make-my-day" is an application that features dynamically updated HyperText Markup Language (HTML) and Cascading Style Sheet (CSS) powered by the third party Application Programming Interface (API), jQuery. In this application, the user can view the updated, current date and time, as well as time-blocks for the day from 9:00 AM - 5:00 PM. Each timeblock is color coded to indicate whether it is in the past, present, or future, and this feature dynamically updates with the current time. When the user clicks on a time block, they are able to type in text, and when the user clicks the save button, this text is saved within the time block. Each saved text entry persists page refresh and is viewable upon page reload. 
+This workday scheduler application, aptly named "make-my-day," features dynamically updated HyperText Markup Language (HTML) and Cascading Style Sheet (CSS) powered by the third party Application Programming Interface (API), jQuery. In this application, the user can view the updated, current date and time, as well as time-blocks for the day from 9:00 AM - 5:00 PM. Each time-block is color coded to indicate whether it is in the past, present, or future, and this feature dynamically updates with the current time. When the user clicks on a time block, they are able to type in text, and when the user clicks the save button, this text is saved within the time block. Each saved text entry persists page refresh and is viewable upon page reload. 
 
 ## Screenshot
 
