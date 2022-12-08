@@ -36,9 +36,20 @@ var hourSixteen = $("#hour-16");
 var hourSeventeen = $("#hour-17");
 var textAreaEl = $(".description");
 var saveButton = $(".btn");
-
 var today = dayjs().format("MMM DD, YYYY [at] hh:mm:ss a");
 var currentHour = dayjs().hour();
+var hourTimeNumber = [];
+
+
+
+for (var i = 0; i<timeBlockEl.length; i++){
+  var elementID = timeBlockEl[i].getAttribute('id');
+if (elementID.length === 6) hourTimeNumber.push(parseInt(elementID[5]));
+if (elementID.length === 7) hourTimeNumber.push(parseInt(elementID[5] + elementID[6]));
+}
+
+console.log(hourTimeNumber)
+
 
 $(function () {
   // TODO: Add a listener for click events on the save button. This code should
@@ -63,19 +74,19 @@ $(function () {
 
 // FUNCTION TO UPDATE COLOR BLOCK--SHOULD THIS BE RUNNING WITH TIMER/CLOCK? -- HOW DO I KNOW IF THIS IS WORKING?
 
-// .addClass did not work for me.
+console.log(currentHour);
 function checkTime(){
-for (var i = 0; i < timeBlockEl.length; i++)
-
-  if (timeBlockEl[i].id < currentHour) {
+for (var i = 0; i < hourTimeNumber.length; i++)
+  if (hourTimeNumber[i] < currentHour) {
     timeBlockEl[i].classList.add('past');
-  } else if (timeBlockEl[i].id == currentHour) {
+    // console.log('p')
+  } else if (hourTimeNumber[i] == currentHour) {
     timeBlockEl[i].classList.add('present');
-
+// console.log('c')
  
-  } else if (timeBlockEl[i].id > currentHour) {
+  } else if (hourTimeNumber[i] > currentHour) {
     timeBlockEl[i].classList.add('future');
-
+// console.log('f')
 
   }
 };
