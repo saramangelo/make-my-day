@@ -63,6 +63,7 @@ function saveUserInput() {
 
 // TIME INTERVAL FUNCTION
 
+
 setInterval(function () {
   var today = dayjs().format("MMM DD, YYYY [at] hh:mm:ss a");
   $("#currentDay").text(today);
